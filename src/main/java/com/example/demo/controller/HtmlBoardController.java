@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Date;
+
 @Controller
 public class HtmlBoardController {
     private static final Logger logger =
@@ -77,10 +79,47 @@ public class HtmlBoardController {
 
         return "htmlRead";
     }
+    @GetMapping("/regtestpage")
+    public String registerTestPage() {
+        logger.info("registerTestPage()");
 
+        return "form/registerForm";
+    }
+    @PostMapping("regtest")
+    public String registerTest(String userId, String passwd) {
+        logger.info("registerTest");
+
+        logger.info("userId = " + userId);
+        logger.info("passwd = " + passwd);
+
+        return  "form/success";
+    }
+    @GetMapping("/getRegTest")
+    public <userId> String getRegTest(String userId, Date date) {
+        logger.info("getRegTest()");
+        logger.info("userId=" + userId);
+        logger.info("date = " + date);
+
+        return "form/success";
+    }
 }
 
 // MusicController 를 하나 만든다.
 // Controller 기능으로는 음악, 재생, 메뉴보기, 녹음
 // 이와 관련된 HTML 및 Cotroller 구성을 직접 해보자!
 // (음악이 재생, 녹음이 될 필요는 없다.)
+
+// DB 접속하기
+//  mysql -u bitai -p
+// show databases;
+//create database testdb;
+//        use testdb;
+//        show tables;
+//        create table board(
+//        -> board_no int not null auto_increment,
+//        -> title varchar(200) not null,
+//        -> content text null,
+//        -> writer varchar(50) not null,
+//        -> reg_date timestamp not null default now(),
+//        -> primary key(board_no)
+//        -> );
