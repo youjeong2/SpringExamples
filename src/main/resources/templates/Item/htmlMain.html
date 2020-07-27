@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Mania</title>
+</head>
+<script type="text/javascript"
+        src="http://code.jquery.com/jquery-2.1.4.min.js">
+</script>
+<script>
+    $(document).ready(function() {
+        var formObj = $("#board");
+        $("#brnRegister").on("click", function() {
+            formObj.attr("action", "register");
+            formObj.attr("method", "post");
+            formObj.sumbmit()
+         });
+         $("#btnList").on("click", function() {
+            self.location = "list";
+         });
+      });
+</script>
+<body>
+<h2>Item Mania</h2>
+<!-- th:action="@" : URL 링크
+     th:action="$" : 객체 링크
+     th:field="*" : 객체에 있는 내부 멤버 링크(접근) -->
+<form id="item" action="item/success.html"
+      th:action="@{register}"
+      th:object="${item}" method="post">
+    <!--우리가 입력한 정보를 DB에 넣는 작업-->
+    <table>
+        <tr>
+            <td>ID</td>
+            <td><input type="text" name="id"
+                       th:field="*{id}"/></td>
+            <td><font color="red">
+                <!-- 앞서 얻은 field에 title에 에러가 있다면 -->
+                <span th:if="${#fields.hasErrors('id')}"
+                      th:errors="*{id}">
+                        ID Error Message
+                    </span>
+            </font></td>
+        </tr>
+        <tr>
+            <td>PW</td>
+            <td><input type="text" name="pw"
+                       th:field="*{pw}"/></td>
+            <td><font color="red">
+                <!-- 앞서 얻은 field에 title에 에러가 있다면 -->
+                <span th:if="${#fields.hasErrors('pw')}"
+                      th:errors="*{pw}">
+                        PW Error Message
+                    </span>
+            </font></td>
+        </tr>
+
+    </table>
+</form>
+<div>
+    <button type="submit" id="btnRegister">확인</button>
+    <button type="submit" id="btnList">회원가입</button>
+</div>
+</body>
+</html>
