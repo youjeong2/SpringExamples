@@ -22,9 +22,18 @@
             List is Empty
         </td>
     </tr>
-    <!--
+
+    <!--foreach for(A : B) 와 같은 것-->
+    <!-- BoardController의 ${list}를 가져온 것-->
     <tr th:each="board: ${list}">
-        <td align="center">
+        <!--board 정보에 대해 지정해줘야 함.-->
+        <!--center : 가운데 정렬하겠다.-->
+        <td align="center" th:text="${board.boardNo}">
+            ${board.boardNo}
+        </td>
+        <td align="left">
+            <a href="board/read.html"
+               th:href="@{|read?boardNo=${board.boardNo}|}"
             <a th:text="${board.title}">${board.title}</a>
         </td>
         <td align="right" th:text="${board.writer}">
@@ -35,7 +44,11 @@
             ${board.regDate}
         </td>
     </tr>
-    -->
 </table>
 </body>
 </html>
+
+
+
+
+
