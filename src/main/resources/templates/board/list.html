@@ -5,35 +5,37 @@
     <title>Board List</title>
 </head>
 <body>
-
-<h2> Board List</h2>
-<table border = "1">
+<h2>Board List</h2>
+<a href="board/register.html" th:href="@{getRegister}">
+    Write New Contents
+</a>
+<!-- HTML 주석 -->
+<table border="1">
     <tr>
-        <th align="center" width = "80">No</th>
-        <th align="center" width = "80">Title</th>
-        <th align="center" width = "80">Writer</th>
-        <th align="center" width = "80">Regdate</th>
+        <th align="center" width="80">No</th>
+        <th align="center" width="80">Title</th>
+        <th align="center" width="80">Writer</th>
+        <th align="center" width="80">Regdate</th>
     </tr>
-
-    <tr th:if"${#lists.isEmpty(list)}">
-        <td colspan ="4">
+    <tr th:if="${#lists.isEmpty(list)}">
+        <td colspan="4">
             List is Empty
         </td>
     </tr>
     <!--
-            <tr th:each="board: ${list}">
-                <td align="center">
-                    <a th:text="${board.title}">${board.title}</a>
-                </td>
-                <td align="right" th:text="${board.writer}">
-                    ${board.writer}
-                </td>
-                <td align="center"
-                    th:text="${#dates.format(board.regDate, 'yyyy-MM-dd HH:mm:ss')}">
-                    ${board.regDate}
-                </td>
-            </tr>
-            -->
+    <tr th:each="board: ${list}">
+        <td align="center">
+            <a th:text="${board.title}">${board.title}</a>
+        </td>
+        <td align="right" th:text="${board.writer}">
+            ${board.writer}
+        </td>
+        <td align="center"
+            th:text="${#dates.format(board.regDate, 'yyyy-MM-dd HH:mm:ss')}">
+            ${board.regDate}
+        </td>
+    </tr>
+    -->
 </table>
 </body>
 </html>
