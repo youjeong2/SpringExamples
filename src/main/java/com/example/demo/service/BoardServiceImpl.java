@@ -28,4 +28,19 @@ public class BoardServiceImpl implements BoardService {
     public List<Board> list() throws Exception {
         return boardRepository.list();
     }
+    @Override
+    public Board read(Integer boardNo) throws Exception {
+        return boardRepository.read(boardNo);
+    }
+
+    @Override
+    public void remove(Integer boardNo) throws Exception {
+     boardRepository.remove(boardNo);
+    }
+    //  보서비스로 요청 ->리파지토리 -> db접근 -> 쿼리 날려서->컨트롤
+
+    @Override
+    public void modify(Board boardNo) throws Exception {
+        boardRepository.modify(boardNo);
+    }
 }

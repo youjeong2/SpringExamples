@@ -10,26 +10,23 @@
 <script>
     $(document).ready(function() {
         var formObj = $("#board");
-        $("#btnRegister").on("click", function() {
-            formObj.attr("action", "postRegister");
+        $("#btnModify").on("click", function() {
+            formObj.attr("action", "postModify");
             formObj.attr("method", "post");
             formObj.submit();
-         });
-         $("#btnList").on("click", function() {
+        });
+        $("#btnList").on("click", function() {
             self.location = "list";
-         });
-      });
+        });
+    });
 </script>
 <body>
-<h2>Register</h2>
-<!-- th:action="@" : URL 링크
-     th:action="$" : 객체 링크
-     th:field="*" : 객체에 있는 내부 멤버 링크(접근) -->
+<h2>Modify</h2>
 <form id="board" action="board/success.html"
-      th:action="@{register}"
+      th:action="@{modify}"
       th:object="${board}" method="post">
     <!--우리가 입력한 정보를 DB에 넣는 작업-->
-    <p>test</p>
+    <input type="hidden" name="boardNo" th:field="*{boardNo}"/>
     <table>
         <tr>
             <td>Title</td>
@@ -70,7 +67,7 @@
     </table>
 </form>
 <div>
-    <button type="submit" id="btnRegister">Register</button>
+    <button type="submit" id="btnModify">Modify</button>
     <button type="submit" id="btnList">List</button>
 </div>
 </body>

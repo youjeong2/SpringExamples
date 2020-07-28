@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Board;
-import com.example.demo.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,25 +10,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class BoardController {
+public class ItemManiaController {
     private static final Logger log =
-            LoggerFactory.getLogger(BoardController.class);
+            LoggerFactory.getLogger(ItemManiaController.class);
 
     @Autowired
-    private BoardService service;
+    private ItemManiaService service;
 
     @GetMapping("/getRegister")
     public String getRegister(Board board, Model model)
-                                        throws Exception{
+            throws Exception{
         log.info("getRegister()");
 
         return "board/register";
     }
 
-
     @PostMapping("/postRegister")
     public String postRegister(Board board, Model model)
-                                        throws Exception {
+            throws Exception {
         log.info("postRegister()");
 
         service.register(board);
@@ -39,7 +37,7 @@ public class BoardController {
     }
     @GetMapping("/list")
     public String list(Model model)
-                throws Exception{
+            throws Exception{
         log.info("list()");
         // 속성 추가(이름 list)
         // Controller -> Service => Repository 방식으로 동작하게 설계되어 있다.
@@ -62,7 +60,7 @@ public class BoardController {
     }
     @PostMapping("/remove")
     public String remove(int boardNo, Model model)
-                                    throws Exception {
+            throws Exception {
         log.info("remove()");
 
         service.remove(boardNo);
@@ -73,7 +71,7 @@ public class BoardController {
     }
     @GetMapping("/getModify")
     public String getmodify(int boardNo, Model model)
-                                    throws Exception {
+            throws Exception {
         log.info("getModify()");
 
         model.addAttribute(service.read(boardNo));
@@ -82,7 +80,7 @@ public class BoardController {
     @PostMapping("/postModify")
     //
     public String modify(Board board, Model model)
-                                        throws Exception {
+            throws Exception {
         log.info("postModify()");
 
         service.modify(board);

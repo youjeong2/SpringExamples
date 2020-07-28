@@ -12,5 +12,9 @@ public interface BoardService {
     // DB를 처리할 때 오류가 발생할 수 있으므로
     // 예외처리 루틴에게 해당 부분의 처리를 위임
     public void register(Board board) throws Exception;
+    // list 는 목록, read는 읽어온것 보여주는 것
     public List<Board> list() throws Exception;
+    public Board read(Integer boardNo) throws Exception;
+    public void remove(Integer boardNo) throws Exception;
+    public void modify(Board boardNo) throws Exception;
 }

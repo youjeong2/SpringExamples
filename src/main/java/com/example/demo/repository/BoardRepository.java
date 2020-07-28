@@ -69,4 +69,49 @@ public class BoardRepository {
 
         return results;
     }
-}
+    // 글 읽을 때 필요한거 세팅 -> 이제 service 만들기
+    public Board read(Integer boardNo) throws Exception{
+        // 특정한 board 번호를 가지고
+        // 번호, 제목, 내용, 저자, 등록일을 가져오는 작업
+        List<Board> results = jdbcTemplate.query(
+                "select board_no, title, content, writer," +
+                        "reg_date from board where board_no =?",
+                new RowMapper<Board>() {
+                    @Override
+                    public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        Board board = new Board();
+
+                        board.setBoardNo(rs.getInt("board_no"));
+                        board.setTitle(rs.getString("title"));
+                        board.setWriter(rs.getString("writer"));
+                        board.setContent(rs.getString("content"));
+                        board.setRegDate(rs.getDate("reg_date"));
+
+                        return board;
+                    }
+                }, boardNo
+        ); // 나중에 JPA로 바꾸게 됨용
+        // 처리한 결과가 아무것도 없다면 null 리턴하고
+        // 만약 결과가 나왔다면 처리한 결과의 첫번째 행을 리턴한다.
+        // 0은 첫번째 행을 의미함
+        return results.isEmpty ()? null : results.get(0);
+    }
+    public void remove(Integer boardNo) throws Exception {
+        // DB 테이블 안에 있는 내용을 지울때는 delete를 사용한다.
+        // board_no이 들어온걸 지우겠다
+        // from+ 디비명 + where + 조건
+        String query = "delete from board where board_no =?";
+        jdbcTemplate.update(query, boardNo);
+        //? 로 보드넘이 들어감
+    }
+        public void modify (Board boardNo) throws Exception {
+            // update는 DB테이블의 내용을 갱신하는데 사용한다.
+            // update 테이블명 set 이후에 고칠값들, 필요하다면 조건이 붙음
+            // 보드넘에 들어오는 녀석에 한해서 보드넘의 타이틀과 콘텐트를 업데이트 하겠다.
+            String query= "update board set title = ?, content = ? where board_no = ?";
+            jdbcTemplate.update (
+                    query, boardNo.getTitle(),
+                    boardNo.getContent(), boardNo.getBoardNo()
+            );
+        }
+    }
