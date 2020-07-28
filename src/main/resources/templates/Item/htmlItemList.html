@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>아이템 리스트 </h2>
+<a href="item/register.html" th:href="@{getRegister}">
+    Write New Contents
+</a>
+<!-- HTML 주석 -->
+<table border="1">
+    <tr>
+        <th align="center" width="80">No</th>
+        <th align="center" width="80">아이템 이름 </th>
+        <th align="center" width="80">가격</th>
+    </tr>
+    <tr th:if="${#lists.isEmpty(list)}">
+        <td colspan="4">
+            List is Empty
+        </td>
+    </tr>
+
+    <tr th:each="item: ${list}">
+
+        <td align="center" th:text="${item.itemNo}">
+            ${item.itemNo}
+        </td>
+        <td align="left">
+            <a href="item/read.html"
+               th:href="@{|read?itemNo=${item.itemNo}|}"
+            <a th:text="${item.name}">${item.name}</a>
+        </td>
+        <td align="right" th:text="${item.price}">
+            ${item.price}
+        </td>
+    </tr>
+</table>
+<div>
+    <button type="submit" id="btnRegister">내정보</button>
+    <button type="submit" id="btnList">등록</button>
+</div>
+</body>
+</html>
+
+
+
+
+

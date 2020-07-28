@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<h2>아이템 설</h2>
+
+<body>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript"
+        src="http://code.jquery.com/jquery-2.1.4.min.js">
+</script>
+<script>
+    $(document).ready(function() {
+        var formObj = $("#board");
+
+        console.log(formObj);
+
+        $("#btnModify").on("click", function() {
+            var boardNo = $("#boardNo");
+            var boardNoVal = boardNo.val();
+
+            self.location = "getModify?boardNo=" + boardNoVal;
+        });
+
+        $("#btnRemove").on("click", function() {
+            formObj.attr("action", "remove");
+            formObj.submit();
+        });
+
+        $("#btnList").on("click", function() {
+            self.location = "list";
+        });
+    });
+</script>
+<body>
+<h2>아이템 설명</h2>
+
+<form id="board" th:object="${board}" method="POST">
+    <input type="hidden" name="boardNo"
+           th:field="*{boardNo}"/>
+
+    <table>
+        <tr>
+            <td>아이템 이름</td>
+            <td><input type="text" name="name"
+                       th:field="*{name}"
+                       readonly="readonly"></td>
+        </tr>
+        <tr>
+            <td>설명</td>
+            <td><textarea name="explain"
+                          th:field="*{explain}"
+                          readonly="readonly"/></td>
+        </tr>
+    </table>
+</form>
+
+<div>
+    <button type="submit" id="btnModify">돌아가기</button>
+
+</div>
+</body>
+</html>
