@@ -71,6 +71,7 @@
     <ul>
         <li v-for="(item, index) in monster"
             v-bind:key="item.id" v-if="item.hp">
+            <!-- v-for을 쓰면 키값도 써줘야함-->
             ID:{{ item.id }} {{ item.monsterName }} HP:{{ item.hp }} Status:{{ item.status }}
             <span v-if="item.hp > 300">Strong</span>
             <span v-if="item.hp < 50">Morbidity</span>
@@ -335,6 +336,8 @@
                 },
                 shuffleShopList: function() {
                     // !는 not 연산이므로 어떤 결과든 부정함
+                    // 클릭했을 때 true값을 부정하고 shopListValue값을 초기화 시켜버려서
+                    // Shop List음 클릭해도 그 전 값이 나오지 않게함
                     if(!this.shopView) {
                         this.shopListValue = []
                     }
@@ -346,20 +349,20 @@
                     }
                 },
                 calcBuy: function() {
-                    var tmpSum = 0
+                    var tmpSum = 0 // 장바구니
                     // 구매하려고 하는 물건의 인덱스 번호를 가지고 있음
                     // 가장 외부의 for Loop는 구매하려는 물건의 개수
                     console.log('calcBuy(): ' + this.shopListValue.length)
                     console.log('shoplist len: ' + this.shopList.length)
-                    for(var i = 0; i < this.shopListValue.length; i++) {
+                    for(var i = 0; i < this.length; i++) {
                         console.log(this.shopListValue[i])
-                        // 가장 내부의 for Loop은 상점에 있는 물건의 개수
+                        // 가장 내부의 for Loop은 상점에 있는 전체 물건의 개수
                         for(var j = 0; j < this.shopList.length; j++) {
                             console.log('inner loop')
-                            if(this.shopListValue[i] == j) {
+                            if(this.shopListValue[i] == j) { // 구매하려는 물건의 인덱스번 = 전체 물건 중 고른 개수
                                 console.log('match!')
-                                tmpSum += this.shopList[j].price
-                                break
+                                tmpSum += this.shopList[j].price // 구매하려는 물건의 인덱스의 가격
+                                break // 첫번째 물건 선택 후음 break, 그리고 다시 다른 물건 담음
                             }
                         }
                     }
@@ -369,10 +372,11 @@
                         this.money -= tmpSum
 
                         // 돈 계산이 끝난 이후에 내용을 추가해주도록 한다.
-                        // 필요한 데이터들은 this.shopList에 있으며
-                        // 또한 각각의 인덱스들은 shopListValue에서 얻는다.
+                        // 필요한 데이터들은 this.shopList에 있으며 (전체 물건 데이터)
+                        // 또한 각각의 인덱스들은 shopListValue에서 얻는다. ( 물건들의 인덱스값)
                         for(var i = 0; i < this.shopListValue.length; i++) {
                             this.myInventory.push({
+                                // itemName의 shopListValue의 인덱스값의 shopList의 인덱스값 = 내가 고른 것의 shopList[]
                                 itemName: this.shopList[this.shopListValue[i]].itemName,
                                 effect: this.shopList[this.shopListValue[i]].effect
                             })
