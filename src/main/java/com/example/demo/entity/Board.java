@@ -10,11 +10,11 @@ public class Board {
     private Date regDate;
 
     public int getBoardNo() {
-        return boardNo;
+        return boardNo; // 힘수에서 보내는
     }
 
     public void setBoardNo(int boardNo) {
-        this.boardNo = boardNo;
+        this.boardNo = boardNo; // 함수로 들어온 값을 자기것으로 만드는 것것
     }
 
     public String getTitle() {
