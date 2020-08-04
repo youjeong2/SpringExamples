@@ -44,13 +44,14 @@
            <td>{{ value }}</td>
          </tr>
       </table>
-      <!-- this.$store이 vuex -->
+      <!-- this.$store이 vuex를 사용하겠단 의미 -->
       <b>count: {{ this.$store.state.count }}</b><br>
       <b>count^2: {{ this.$store.getters.count }}</b><br>
       <b>weight: {{ this.$store.getters.weight }}</b><br>
       <input type="button" @click="increment()" value="inc"/>
-      <input type="button" @click="decrement()" value="dec"/>
-
+      <input type="button" @click="decrement()" value="dec"/><br>
+      <b>random: {{ this.$store.getters.random }}</b><br>
+      <input type="button" @click="randomNumber()" value="random"/><br>
      </div>
     </div>
 </template>
@@ -106,6 +107,16 @@ export default {
     decrement: function () {
       this.$store.commit('decrement')
       this.$cookies.set('value', this.$store.state.count, 60 * 60 * 24)
+    },
+    randomNumber: function () {
+      this.$store.dispatch('generateRandomNumber')
+      // dispatch는 무조건 action으로간다.
+      // commit은 비동기 처리가 가능하다.
+      // 동기가 된다는 건 해당내용의 실행을 보장/ 비동기는 나오든 말든 그냥 뿌리고 간다.
+      // 비동기에서 작업이 오래걸리는 것은 바로 반영이 안될 수 있음
+      // 동기처리할거에 비동기처리 넣으면 렉걸림
+      // dispatch는 action 서버에 랜덤 넘 달라 -> 인덱스 스토어 파싱한 랜덤넘버 값을 랜덤넘에 넣어 주세요 데이터 요청이 끝날 깨가지 보장해주세요
+      // commit은 내부에 있는 것에 보낼 때는 커밋
     }
   },
   created: function () {

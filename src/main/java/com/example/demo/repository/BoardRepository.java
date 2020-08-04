@@ -69,7 +69,7 @@ public class BoardRepository {
 
         return results;
     }
-    // 글 읽을 때 필요한거 세팅 -> 이제 service 만들기
+    // 글 읽을 때 필요한거 세팅 -> 이제 service  만들기
     public Board read(Integer boardNo) throws Exception{
         // 특정한 board 번호를 가지고
         // 번호, 제목, 내용, 저자, 등록일을 가져오는 작업
