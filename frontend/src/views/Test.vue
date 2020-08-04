@@ -37,7 +37,6 @@
              <td>{{ idx }}</td>
            </tr>
         </table>
-
         <p>(key ,value) 기반 순회</p>
         <table border="1" style="border-collapse:collapse;">
          <tr v-bind:key="(key ,value)" v-for="(key ,value) in data">
@@ -45,6 +44,12 @@
            <td>{{ value }}</td>
          </tr>
       </table>
+      <!-- this.$store이 vuex -->
+      <b>count: {{ this.$store.state.count }}</b><br>
+      <b>count^2: {{ this.$store.getters.count }}</b><br>
+      <b>weight: {{ this.$store.getters.weight }}</b><br>
+      <input type="button" @click="increment()" value="inc"/>
+      <input type="button" @click="decrement()" value="dec"/>
 
      </div>
     </div>
@@ -52,6 +57,8 @@
 
 <script>
 import Vue from 'vue'
+/* eslint-disable no-unused-vars */
+import store from '../store'
 import cookies from 'vue-cookies'
 
 Vue.use(cookies)
@@ -91,7 +98,18 @@ export default {
     },
     intCnt: function () {
       this.cnt++
+    },
+    increment: function () {
+      this.$store.commit('increment')
+      this.$cookies.set('value', this.$store.state.count, '1h')
+    },
+    decrement: function () {
+      this.$store.commit('decrement')
+      this.$cookies.set('value', this.$store.state.count, 60 * 60 * 24)
     }
+  },
+  created: function () {
+    this.$store.state.count = this.$cookies.get('value')
   }
 }
 </script>
