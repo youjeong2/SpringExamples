@@ -22,6 +22,30 @@
         <p>{{ message }}</p>
         <input v-model="message"><br>
         <button @click="intCnt">{{ cnt }}</button><br>
+        <!-- border-collapse는 테두리와 셀 사이 간격 삭제 -->
+        <p>count() 기반 순회</p>
+        <table border="1" style="border-collapse:collapse;">
+           <tr v-bind:key=idx v-for="idx in count">
+             <td>{{ msg }}</td>
+             <td>{{ idx }}</td>
+          </tr>
+        </table>
+        <p>list 기반 순회</p>
+        <table border="1" style="border-collapse:collapse;">
+           <tr v-bind:key=idx v-for="idx in list()">
+             <td>{{ message }}</td>
+             <td>{{ idx }}</td>
+           </tr>
+        </table>
+
+        <p>(key ,value) 기반 순회</p>
+        <table border="1" style="border-collapse:collapse;">
+         <tr v-bind:key="(key ,value)" v-for="(key ,value) in data">
+           <td>{{ key }}</td>
+           <td>{{ value }}</td>
+         </tr>
+      </table>
+
      </div>
     </div>
 </template>
@@ -35,6 +59,15 @@ Vue.use(cookies)
 export default {
   data: function () {
     return {
+      msg: 'Test',
+      count: 7,
+      list: function () {
+        var list = []
+        for (var i = 1; i < this.count; i += 2) {
+          list.push(i)
+        }
+        return list
+      },
       message: 'Test Page',
       seen: true,
       todos: [
@@ -42,7 +75,14 @@ export default {
         { text: 'Golang' },
         { text: 'C++' }
       ],
-      cnt: 0
+      cnt: 0,
+      data: {
+        bird: 'raven',
+        animal: 'tiger',
+        fish: 'tuna',
+        proj: 'cnn',
+        major: 'EE'
+      }
     }
   },
   methods: {
