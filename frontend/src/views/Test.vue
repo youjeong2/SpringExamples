@@ -52,6 +52,12 @@
       <input type="button" @click="decrement()" value="dec"/><br>
       <b>random: {{ this.$store.getters.random }}</b><br>
       <input type="button" @click="randomNumber()" value="random"/><br>
+
+      <global-component v-bind:initial-counter="counter">
+      </global-component><br>
+
+      <local-component  v-bind:num="value"></local-component>
+      <button v-on:click="plus">click</button><br>
      </div>
     </div>
 </template>
@@ -61,12 +67,21 @@ import Vue from 'vue'
 /* eslint-disable no-unused-vars */
 import store from '../store'
 import cookies from 'vue-cookies'
+import GlobalComponent from '../components/GlobalComponent.vue'
+import LocalComponent from '../components/LocalComponent.vue'
+
+Vue.component(GlobalComponent.name, GlobalComponent)
 
 Vue.use(cookies)
 
 export default {
+  components: {
+    'local-component': LocalComponent
+  },
   data: function () {
     return {
+      counter: 3,
+      value: 1,
       msg: 'Test',
       count: 7,
       list: function () {
@@ -115,8 +130,11 @@ export default {
       // 동기가 된다는 건 해당내용의 실행을 보장/ 비동기는 나오든 말든 그냥 뿌리고 간다.
       // 비동기에서 작업이 오래걸리는 것은 바로 반영이 안될 수 있음
       // 동기처리할거에 비동기처리 넣으면 렉걸림
-      // dispatch는 action 서버에 랜덤 넘 달라 -> 인덱스 스토어 파싱한 랜덤넘버 값을 랜덤넘에 넣어 주세요 데이터 요청이 끝날 깨가지 보장해주세요
+      // dispatch는 action 서버에 랜덤 넘 달라 -> 인덱스 스토어 파싱한 랜덤넘버 값을 랜덤넘에 넣어 주세요 데이터 요청이 끝날 때가지 보장해주세요
       // commit은 내부에 있는 것에 보낼 때는 커밋
+    },
+    plus: function () {
+      this.value++
     }
   },
   created: function () {
