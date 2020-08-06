@@ -1,3 +1,5 @@
+// 컴포넌트 간의 데이터 이동시키거나 통신하고 싶을 때 여기 적음
+// store객체 - 크리티컬 섹션(연산)
 import Vue from 'vue'
 import Vuex from 'vuex'
 // import axios from 'axios'

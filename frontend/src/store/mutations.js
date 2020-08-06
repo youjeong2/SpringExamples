@@ -1,3 +1,5 @@
+// mutation은 자동으로 데이터에 무결성을 보장 (thread safe)
+// state : 데이터 자체
 import {
   successGenRandNum,
   failGenRandNum,

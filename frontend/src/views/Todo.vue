@@ -55,7 +55,8 @@ export default {
     randomNumber () {
       this.generateRandomNumber()
     },
-    // 생성된 시점에 보관한다 - 기존정보 불러오고 날린 상태보관
+    // create :생성자가 동작하는 시점 정보가 들어갈 때
+    // restore:생성된 시점에 보관한다 - 기존정보 불러오고 날린 상태보관
     created () {
       this.restore()
     }

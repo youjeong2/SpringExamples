@@ -1,3 +1,4 @@
+// home을 idex에서 보여줌, router에 있는 home을 찾아서 보여줌
 <template>
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
