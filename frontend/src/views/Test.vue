@@ -24,7 +24,7 @@
         <button @click="intCnt">{{ cnt }}</button><br>
         <!-- border-collapse는 테두리와 셀 사이 간격 삭제 -->
         <p>count() 기반 순회</p>
-        <table border="1" style="border-collapse:collapse;">
+        <table border="5" style="border-collapse:collapse;">
            <tr v-bind:key=idx v-for="idx in count">
              <td>{{ msg }}</td>
              <td>{{ idx }}</td>

@@ -1,20 +1,17 @@
 <template>
   <div>
-    <h3> Todo List</h3>
-      <ul>
-        <h3>Todo List</h3>
-        // bind는 데이터, on은 mehthod
-        // editingId를 "editingId" 로 mapping?
-        <todo-item v-for="todoItem in todoItems"
-          v-bind:key="todoItem.id"
-          v-bind:todoItem="todoItem"
-          v-bind:editingId="editingId"
-          v-on:removeTodo="onRemoveTodo"
-          v-on:updateTodo="onUpdateTodo"
-          v-on:setEditingId="SET_EDITING_ID"
-          v-on:resetEditingId="RESET_EDITING_ID"
-          v-on:toggleTodoStatus="onToggleTodoStatus"/>
-      </ul>
+    <ul>
+      <h3>Todo List</h3>
+      <todo-item v-for="todoItem in todoItems"
+        v-bind:key="todoItem.id"
+        v-bind:todoItem="todoItem"
+        v-bind:editingId="editingId"
+        v-on:removeTodo="onRemoveTodo"
+        v-on:updateTodo="onUpdateTodo"
+        v-on:setEditingId="SET_EDITING_ID"
+        v-on:resetEditingId="RESET_EDITING_ID"
+        v-on:toggleTodoStatus="onToggleTodoStatus"/>
+    </ul>
   </div>
 </template>
 
@@ -42,25 +39,29 @@ export default {
   // 상위에 있는 removeTodo에서 "onRemoveTodo"가 호출되니까
   // onRemove를 methods에 추가시켜줌
   methods: {
-  ...mapMutations([
-    SET_EDITING_ID,
-    RESET_EDITING_ID
-  ]),
-  onRemoveTodo (id) {
-    this.$emit('removeTodo', id)
-  },
-  onUpdateTodo (id) {
-    this.$emit('updateTodo', id)
-  },
-  onToggleTodoStatus (id) {
-    this.$emit('toggleTodoStatus')
+    ...mapMutations([
+      SET_EDITING_ID,
+      RESET_EDITING_ID
+    ]),
+    onRemoveTodo (id) {
+      this.$emit('removeTodo', id)
+    },
+    onUpdateTodo (content, id) {
+      this.$emit('updateTodo', content, id)
+    },
+    onToggleTodoStatus (id) {
+      this.$emit('toggleTodoStatus', id)
     }
   }
 }
 </script>
+
 <style scoped>
   div {
     background-color: #7CA1E1
-
+  }
+  .monospace {
+    font-family: "Lucida Console", Courier, monospace;
+    text-decoration: underline;
   }
 </style>

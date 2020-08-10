@@ -1,19 +1,27 @@
-// 추가한 method들 import하
 import {
   successGenRandNum,
   failGenRandNum,
   ADD_TODO,
   REMOVE_TODO,
   CLEAR_ALL,
-  RESTORE
+  RESTORE,
+  EDIT_TODO,
+  TOGGLE_TODO_STATUS
 } from './mutation-types'
 
 import axios from 'axios'
-// 커밋해서 날려주는 애들은 다 필요한 정보니까 import하기
+
 export default {
+  editTodo ({ commit }, payload) {
+    commit(EDIT_TODO, payload)
+  },
+  toggleTodoStatus ({ commit }, id) {
+    commit(TOGGLE_TODO_STATUS, id)
+  },
   save ({ state }) {
     const data = {
-      todoItems: state.todoItems
+      todoItems: state.todoItems,
+      nextTodoId: state.nextTodoId
     }
     localStorage.setItem('todo-app-data', JSON.stringify(data))
   },

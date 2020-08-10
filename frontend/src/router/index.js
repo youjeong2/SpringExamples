@@ -4,8 +4,9 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Test from '../views/Test.vue'
 import Todo from '../views/Todo.vue'
-import SignUp from '../views/SignUp.vue'
-import Login from '../views/Login.vue'
+// import SignUp from '../views/SignUp.vue'
+// import Login from '../views/Login.vue'.
+import Concave from '../views/Concave.vue'
 
 Vue.use(VueRouter)
 
@@ -35,14 +36,11 @@ const routes = [
     component: Todo
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/signup',
-    name: 'SignUp',
-    component: SignUp
+    path: '/concave',
+    name: 'Concave',
+    components: {
+      default: Concave
+    }
   }
 ]
 

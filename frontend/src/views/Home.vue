@@ -15,6 +15,9 @@
       <router-link :to="{ name: 'Todo' }" class="nav-link" active-class="active">
         Todo
       </router-link>
+      <router-link :to="{ name: 'Concave' }" class="nav-link" active-class="active">
+        Concave
+      </router-link>
     </div>
     <h2>This is an Home Page</h2>
     <div id="app">
