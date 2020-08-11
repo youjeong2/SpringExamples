@@ -11,7 +11,7 @@
         Test
       </router-link>
     </div>
-    <h2>회원가입</h2>
+    <h2>회원 가입</h2>
     <div id="app">
     <p> Id : v-model:"id" </p>
     </div>

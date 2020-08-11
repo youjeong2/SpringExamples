@@ -9,10 +9,10 @@ import Todo from '../views/Todo.vue'
 import Concave from '../views/Concave.vue'
 
 // For Cafe Board
-import BoardListPage from '../view/BoardListPage.vue'
-import BoardRegisterPage from '../view/BoardRegisterPage.vue'
-import BoardModifyPage from '../view/BoardModifyPage.vue'
-import BoardReadPage from '../view/BoardReadPage.vue'
+import BoardListPage from '../views/BoardListPage.vue'
+import BoardRegisterPage from '../views/BoardRegisterPage.vue'
+import BoardModifyPage from '../views/BoardModifyPage.vue'
+import BoardReadPage from '../views/BoardReadPage.vue'
 
 Vue.use(VueRouter)
 
@@ -49,33 +49,33 @@ const routes = [
     }
   },
   {
-    path: '/boardlist',
+    path: '/board',
     name: 'BoardListPage',
     components: {
       default: BoardListPage
     }
   },
   {
-    path: '/boardregister',
+    path: '/board/create',
     name: 'BoardRegisterPage',
     components: {
       default: BoardRegisterPage
     }
   },
   {
-    path: '/boardmodify',
-    name: 'BoardModifyPage',
-    components: {
-      default: BoardModifyPage
-    }
-  },
-  {
-    path: '/boardread',
+    path: '/board/boardNo',
     name: 'BoardReadPage',
     components: {
       default: BoardReadPage
     }
   },
+  {
+    path: '/board/boardNo/edit',
+    name: 'BoardModifyPage',
+    components: {
+      default: BoardModifyPage
+    }
+  }
 ]
 
 const router = new VueRouter({

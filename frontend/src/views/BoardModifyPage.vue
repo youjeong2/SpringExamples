@@ -1,11 +1,17 @@
 <template>
-<div align="center">
-  <h2>Board Modification</h2>
+  <div align="center">
+    <h2>Board Modification</h2>
     <board-modify-form/>
-</div>
+  </div>
 </template>
 
 <script>
-import BoardModifyForm from
+import BoardModifyForm from '@/components/BoardModifyForm'
 
-export
+export default {
+  name: 'BoardModifyPage',
+  components: {
+    BoardModifyForm
+  }
+}
+</script>

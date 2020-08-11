@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Board Detailed View</h3>
+    <h3>Compo Board Detailed View </h3>
   </div>
 </template>
 
