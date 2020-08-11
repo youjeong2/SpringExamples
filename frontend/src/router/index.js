@@ -8,6 +8,12 @@ import Todo from '../views/Todo.vue'
 // import Login from '../views/Login.vue'.
 import Concave from '../views/Concave.vue'
 
+// For Cafe Board
+import BoardListPage from '../view/BoardListPage.vue'
+import BoardRegisterPage from '../view/BoardRegisterPage.vue'
+import BoardModifyPage from '../view/BoardModifyPage.vue'
+import BoardReadPage from '../view/BoardReadPage.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -41,7 +47,35 @@ const routes = [
     components: {
       default: Concave
     }
-  }
+  },
+  {
+    path: '/boardlist',
+    name: 'BoardListPage',
+    components: {
+      default: BoardListPage
+    }
+  },
+  {
+    path: '/boardregister',
+    name: 'BoardRegisterPage',
+    components: {
+      default: BoardRegisterPage
+    }
+  },
+  {
+    path: '/boardmodify',
+    name: 'BoardModifyPage',
+    components: {
+      default: BoardModifyPage
+    }
+  },
+  {
+    path: '/boardread',
+    name: 'BoardReadPage',
+    components: {
+      default: BoardReadPage
+    }
+  },
 ]
 
 const router = new VueRouter({
