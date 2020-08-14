@@ -6,6 +6,10 @@ export default {
   editingId: 0,
   nextTodoId: 1,
   filter: null,
+  // Vue Board
   boards: [],
-  board: null
+  board: null,
+  // For Login
+  accessToken: '',
+  myinfo: null
 }

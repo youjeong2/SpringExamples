@@ -110,6 +110,6 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public long countAll() throws Exception {
-        return 0;
+        return repository.count();
     }
 }

@@ -1,9 +1,41 @@
 server:
-  port : 7777
+  port: 7777
 
-spring :
+spring:
   datasource:
     url: jdbc:mysql://localhost:3306/testdb?serverTimezone=UTC&useSSL=false
-    username : bitai
-    password : 456123
-    driver-class-name : com.mysql.cj.jdbc.Driver
+    username: bitai
+    password: 456123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# - JPA가 동작하는데 필요한 설정하기/ 에러났을 때 어디서 났는지 알려주는 것(정보가 많아지면 번거로워 지긴함)
+# - sql을 보여줄거냐 왜냐면 jpa쓰면 sql을 자동으로 보여주기 때문에
+# - jackson 제이슨처리를하는 빈이 없어도 에러처리를 안하겠다
+
+#  - 결과: 콘솔창에 하이버네이트 sql 쿼리가 자동으로 생성된걸 볼 수 있음
+#  - jpa를 통해서
+#  - forien key 만들어짐 user_no을 베이스로 두개로 묶겠다는 것
+  jpa:
+    open-in-view: false
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+    jackson:
+      serialization:
+        fail-on-empty-beans: false
+  # 디버깅할 때 쓰는 것
+  logging:
+    level:
+      org:
+        hibernate:
+          SQL: DEBUG
+      app:
+        sample:
+          message:
+            AuditingFilter: DEBUG
+            SecurityChecker: DEBUG
+            MessageService: DEBUG

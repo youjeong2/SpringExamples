@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
-
+// 게시판 만들 때 DB연동할 때 쓰는 DBConfig
 @Configuration
 public class DBConfig {
     @Bean
