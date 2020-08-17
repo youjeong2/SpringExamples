@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class CustomUser extends User {
     private Member member;
-
+    // 사용되지 않고 있어서 백처리
     public CustomUser(String username, String passwd,
                       Collection<? extends GrantedAuthority> authorities) {
         super(username, passwd, authorities);

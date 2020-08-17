@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 // if (isNotEmpty 하이버네이트로 써주기)
 // import static org.hibernate.internal.util.StringHelper.isNotEmpty;
 // import static org.springframework.util.ObjectUtils.isEmpty;
-
+// authenticationManager의 멤버변수가 BasicAuthenticationFilter로 등록
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     // -롬벅대신 로거 직접써주기  sl4j 써줘야함
     private static final Logger log = LoggerFactory.getLogger(JwtAuthorizationFilter.class);
@@ -37,6 +37,9 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     @Override
+    // 헤더가 비어있으면, 프리픽스로 시작하지 않는다면
+    // or연산 하나라도 참이면 참 -> 뒤에껀 안보고 아래로 내려가면됨
+    // 그러면 필터체인에 두 필터를 하고 있음
     protected void doFilterInternal(HttpServletRequest req,
                                     HttpServletResponse res,
                                     FilterChain chain) throws IOException, ServletException {

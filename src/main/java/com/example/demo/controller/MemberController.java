@@ -42,7 +42,7 @@ public class MemberController {
         // member 에서 UserPw를 get해와라
         String inputPassword = member.getUserPw();
         // 입력된 페스워드를 체크하기.멤버getUserPw에서
-        // 셋유저pw하면서 암호화를 하는 것
+        // 셋유저pw하면서 암호화된 스트링을  주는 것
         member.setUserPw(passwordEncoder.encode(inputPassword));
 
         service.register(member);

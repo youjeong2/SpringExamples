@@ -21,7 +21,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         Member member = repository.findByUserId(username).get(0);
 
         log.info("member: " + member);
-
+        // 커스텀 유저를 만들어서 리턴함
         return member == null ? null : new CustomUser(member);
     }
 }

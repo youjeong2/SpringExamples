@@ -24,7 +24,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
-
+        // 인자로 들어온 URL로 가겠다.
+        // 로그인폼 에밋을 통해 로그인페이지의 온서브밋을 호출 이게 액션의 로그인을 불러냄(axios 로그인 authUrl)
         setFilterProcessesUrl(SecurityConstants.AUTH_LOGIN_URL);
     }
 
@@ -32,13 +33,15 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest req,
                                                 HttpServletResponse res)
             throws AuthenticationException {
+        // getParameter username 찾아서 뭘로 아이디가 들어왔는지 찾게하는 것
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-
+        // 여기부터 토큰 확인하는 곳
         Authentication authenticationToken =
                 new UsernamePasswordAuthenticationToken(username, password);
         // super필요없음 위에 있으니까
         // authenticate 로 어센티케이트토큰을 보낸다.
+        // authenticationManager를 호출한다.
         return authenticationManager.authenticate(authenticationToken);
     }
     // -인증하면 사용자에대한 정보필요함
@@ -68,7 +71,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .setIssuer(SecurityConstants.TOKEN_ISSUER)
                 .setAudience(SecurityConstants.TOKEN_AUDIENCE)
                 .setSubject("" + user.getMember().getUserNo())
-                .setExpiration(new Date(System.currentTimeMillis() + 3600000))
+                .setExpiration(new Date(System.currentTimeMillis() + 360000000))
                 .claim("rol", roles)
                 .compact();
 

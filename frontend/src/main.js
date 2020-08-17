@@ -9,7 +9,8 @@ Vue.config.productionTip = false
 Vue.use(cookies)
 // 뷰객체를 초기화 하면서 정보를 전달
 function init () {
-  const savedToken = cookies.get('accessToken')
+  const savedToken = null
+  // const savedToken = cookies.get('accessToken')
   // 토큰이 있으면 dispatch를 해서 loginByToken를 전달하고, 저장한다.
   // 토큰이 있으면 뭘 하든 막지 마라
   if (savedToken) {

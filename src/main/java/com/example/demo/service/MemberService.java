@@ -17,7 +17,7 @@ public interface MemberService {
 // regiser
 // setup 처음에 관리자계정만들어줘야함 -> 성격이 레지스터랑 똑같음-> 멤버를 가져와야하니까 member
 // read ->  읽어야하니까  userNo을 가져오고  Long임  ->  member의 userNo을 보여줘야하니까 void 말고 member
-// modify -> 수정해야하니까 member -> 얘는 ?????왜 void?
+// modify -> 수정해야하니까 member -> 얘는 ?????왜 void? db필요한 애들만 쓰는 듯
 // remove -> 번호에 해당하는걸 지우는 거니까 long 지우고 끝이니까 void
 // list 리스트를 가져오는거니까 리스트로 바꿈
 // count 개수를 새는거니까 void를 long으로 바꿔주기
