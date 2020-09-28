@@ -8,6 +8,7 @@
         <th align="center" width="100">Writer</th>
         <th align="center" width="180">Registration Date</th>
       </tr>
+      //
       <tr v-for="page in paginatedData" :key="page.boardNo">
         <td>{{ page.boardNo }}</td>
         <td>{{ page.title }}</td>
@@ -52,11 +53,12 @@ export default {
       this.pageNum -= 1
     }
   },
+  // 여기의 계산식에 의해 위의 페이지가 Count됨
   computed: {
     pageCount () {
       const listLen = this.listArray.length
       const listSize = this.pageSize
-
+      // 디비에 들어온 데이터의 개수 전체길이에서 5로 나누기
       let page = Math.floor(listLen / listSize)
       if (listLen % listSize > 0) {
         page += 1
@@ -65,6 +67,7 @@ export default {
       return page
     },
     // pagenatedData를 listArray로 return해서 list채워짐
+    // 5개의 데이터
     paginatedData () {
       const start = this.pageNum * this.pageSize
       const end = start + this.pageSize

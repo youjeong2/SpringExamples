@@ -4,6 +4,7 @@
     <router-link :to="{ name: 'BoardRegisterPage' }">
       Create New Board
     </router-link>
+    <!-- 실질적으로 페이지내이션 하는 것-->
     <board-list-page-form :list-array="pageArray"/>
   </div>
 </template>
@@ -23,6 +24,9 @@ export default {
       pageArray: []
     }
   },
+  // AXIOS해서 게시판 정보를 받고 pageArray에 넣음
+  // 이부분 action으로 빼고 mutaition, state에 페이지내이션할거 다시 만들기
+  // 페이지내이션은 create의 데이터 가져오는거랑, computed의 계산이 전부임
   created () {
     axios.get('http://localhost:7777/boards')
       .then(res => {

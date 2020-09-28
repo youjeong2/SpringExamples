@@ -50,6 +50,8 @@ dependencies {
 	// compile 'commons-io:commons-io:2.6' 똑같은거 굳이 필용없음
 	compile 'com.h2database:h2'
 	compile 'org.hibernate.validator:hibernate-validator:6.0.7.Final'
+	//  크롤링
+	compile 'org.jsoup:jsoup:1.13.1'
 	// developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'

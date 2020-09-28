@@ -3,10 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import cookies from 'vue-cookies'
+import vuetify from './plugins/vuetify'
+import vuex from 'vuex'
 
 Vue.config.productionTip = false
 
 Vue.use(cookies)
+Vue.use(vuex)
 // 뷰객체를 초기화 하면서 정보를 전달
 function init () {
   const savedToken = null
@@ -28,6 +31,7 @@ init().then(() => {
   new Vue({
     router,
     store,
+    vuetify,
     render: h => h(App)
   }).$mount('#app')
 })

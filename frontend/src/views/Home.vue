@@ -46,6 +46,11 @@
           active-class="active">
         VuetifyBoardListPage
       </router-link>
+      <router-link :to="{ name: 'CrawlCategory' }"
+          class="nav-link"
+          active-class="active">
+        CrawlCategory
+      </router-link>
 
       <h2>This is an Home Page</h2>
       <div id="app">
@@ -119,9 +124,9 @@ div {
 }
 
 #header {
-  padding: 15px;
-  margin-bottom: 15px;
-  margin: 5px 5px;
+  padding: 30px;
+  margin-bottom: 20px;
+  margin: 10px 10px;
 }
 
 img {

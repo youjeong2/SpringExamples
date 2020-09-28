@@ -108,10 +108,7 @@ public class MemberController {
             return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
         }
 
-        String message = messageSource.getMessage("common.cannotSetupAdmin",
-                null, Locale.KOREAN);
-
-        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Fail", HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/myinfo")

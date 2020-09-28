@@ -6,7 +6,11 @@ VuetifyBoardListPageForm-->
 <template>
   <div align="center">
     <h2>Vuetify Board List</h2>
-    <!-- -v-bind생략한 거 form 뒤에 띄워주는 거 잊지말기 -->
+    <!-- -v-bind생략한 거 form 뒤에 띄워주는 거 잊지말기
+     VuetifyBoardListForm html을 태그화
+     list-array로 v-bind하고
+     "pageArray"로 데이터를 던져줌
+      받는애는 prop로 받음-->
     <vuetify-board-list-form :list-array="pageArray"/>
   </div>
 </template>

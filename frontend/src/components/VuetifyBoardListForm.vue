@@ -25,6 +25,7 @@
 <script>
 export default {
   name: 'VuetifyBoardListForm',
+  // 데이터
   data () {
     return {
       pageNum: 0
