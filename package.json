@@ -1,0 +1,22 @@
+{
+  "name": "SpringExamples",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "youjeong2 <feb_green@naver.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youjeong2/SpringExamples.git"
+  },
+  "bugs": {
+    "url": "https://github.com/youjeong2/SpringExamples/issues"
+  },
+  "homepage": "https://github.com/youjeong2/SpringExamples#readme",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "description": ""
+}
