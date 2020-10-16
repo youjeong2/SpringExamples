@@ -1,0 +1,60 @@
+sudo apt-get install curl
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+npm install -g create-react-app
+sudo chown -R bitai /usr/lib/node_modules
+sudo chown -R bitai /usr/bin/create-react-app
+
+sudo npm install -g create-react-app
+create-react-app react_frontend
+cd react_frontend
+npm start
+
+npm install bootstrap react-bootstrap --save-dev
+npm install react-router-dom --save-dev
+npm install axios --save-dev
+
+npm add node-sass
+
+### Yarn Install
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update
+sudo apt-get install yarn
+
+### How to check successful Install (1.22.5)
+yarn -version
+
+### Let's make config directory
+yarn eject
+
+if error) git commit!
+
+npm uninstall --save-dev sass-loader
+npm install --save-dev sass-loader@7.1.0
+
+### When '~include-.....' does not work
+@import '~include-media/dist/include-media'
+@import '~open-color/open-color'
+
+npm add open-color include-media
+
+### Auto Styling Page
+https://styled-components.com/docs/advanced#media-templates
+
+### How to use upon information
+npm add styled-components
+
+### For ToDo App
+npm add node-sass classnames react-icons
+
+### For High Performance & Support Plugins
+npm add react-virtualized
+npm add immer
+npm add react-router-dom
+npm add axios
+npm add redux-devtools-extension
+npm install --save redux react-redux
+npm add redux-actions
+npm add redux-logger
+npm add redux-thunk
+npm add redux-saga
